@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------------
+# terraform.tfvars.example
+# Copy this file to terraform.tfvars and replace the placeholder values.
+# terraform.tfvars is ignored by Git so school-specific values stay private.
+# -----------------------------------------------------------------------------
+
+# Region closest to Ann Arbor, MI
+aws_region   = "us-east-2"
+project_name = "charter-school"
+environment  = "prod"
+
+# Network (matches the design document)
+vpc_cidr             = "10.20.0.0/16"
+external_subnet_cidr = "10.20.1.0/24"
+internal_subnet_cidr = "10.20.2.0/24"
+enable_nat_gateway   = true
+
+# VPN - REQUIRED. Replace with the school's real values.
+# school_network_cidr must not overlap 10.20.0.0/16.
+school_network_cidr = "10.10.0.0/16"
+customer_gateway_ip = "203.0.113.10" # Public IP of the school firewall (placeholder)
+
+# Optional extra trusted admin ranges (the school network is always allowed)
+admin_cidr_blocks = []
+
+# Compute - REQUIRED: name of an existing EC2 key pair in us-east-2
+key_pair_name = "charter-school-admin"
+
+# Windows: 4 vCPU / 8 GiB    Linux: 2 vCPU / 4 GiB
+windows_instance_type = "c6i.xlarge"
+linux_instance_type   = "t3.medium"
+
+# Leave empty to use the latest Windows Server 2022 and Ubuntu 24.04 LTS AMIs
+windows_ami_id = ""
+linux_ami_id   = ""
+
+flow_log_retention_days = 30

@@ -1,0 +1,22 @@
+# Terraform working directory and state (state can contain secrets)
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfplan
+
+# Real variable files contain school-specific values
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Key material
+*.pem
+*.ppk
